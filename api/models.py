@@ -9,10 +9,11 @@ from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser
 from .managers import UserManager
 
+
 class Doc(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=30)
-    account = models.CharField(max_length=30, blank=True, null=True)
+    author = models.CharField(max_length=30, blank=True, null=True)
     text = models.CharField(max_length=30000)
     create_time = models.DateField(auto_now=True)
     update_time = models.DateField(auto_now_add=True)
@@ -40,6 +41,5 @@ class User(AbstractBaseUser):
     def get_short_name(self):
         return self.account
 
-    @classmethod
     def check_password(self, raw_password):
         return True

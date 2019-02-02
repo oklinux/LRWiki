@@ -1,6 +1,5 @@
 import string
 import random
-from django.utils import timezone
 
 CHARS = (
     string.ascii_uppercase + string.ascii_lowercase + string.digits
@@ -15,9 +14,12 @@ def random_string(length=10, chars=CHARS):
 
 
 def generate_doc_data(**data):
+    """
+    Generate a random doc data.
+    """
     doc_data = {
         'title': data.get('title', random_string()),
-        'text': data.get('text',random_string()),
-        'title': data.get('title',random_string()),
+        'text': data.get('text', random_string()),
+        'author': data.get('author', random_string())
     }
     return doc_data
