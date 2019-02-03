@@ -47,10 +47,10 @@ class DocDetailView(APIView):
     permission_classes = (IsAccountOrReadOnly,)
 
     def get_object(self, doc_id):
-        doc = get_doc_by_id(id)
+        doc = get_doc_by_id(doc_id)
         if not doc:
-            return Http404
-        self.check_object_permissions(self.request,doc)
+            raise Http404
+        self.check_object_permissions(self.request, doc)
         return doc
 
     def get(self, request, doc_id):

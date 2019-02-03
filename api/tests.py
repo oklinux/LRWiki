@@ -37,9 +37,26 @@ class DocDetailApiViewTestCase(BaseTestCase):
     def setUp(self):
         super(DocDetailApiViewTestCase,self).setUp()
         self.url = f'/api/doc/{self.docs[0].id}/'
-        print(self.url)
 
-    # def test_put_doc(self):
-    #     data = generate_doc_data()
-    #     response = self.users['Ua'].client.put(self.url, data=data)
-    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
+    def test_get_doc_detail(self):
+        """
+        get doc detail,it will success and return doc detail
+        :return:
+        """
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_put_doc(self):
+        """
+        put Ua url random data , it will success and return status 200
+        """
+        data = generate_doc_data()
+        response = self.users['Ua'].client.put(self.url, data=data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_delete_doc(self):
+        """
+        delete Ua's doc it will success and return 204
+        """
+        response = self.users['Ua'].client.delete(self.url)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)

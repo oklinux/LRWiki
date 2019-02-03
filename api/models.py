@@ -33,7 +33,7 @@ class User(AbstractBaseUser):
 
     class Meta:
         managed = False  # Created from a view. Don't remove.
-        db_table = 'tmp_user'
+        db_table = 'wiki_user'
 
     def get_full_name(self):
         return self.account
