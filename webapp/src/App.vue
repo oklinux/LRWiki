@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <WikiTitle/>
     <nav>
-      <div class="nav-container">
-        <div class="nav-logo">
+      <div class="nav-container row">
+        <div class="nav-logo col-sm-2">
           LinuxRen
         </div>
         <ul class="nav-links">
@@ -11,14 +10,15 @@
             <router-link to="/">Home</router-link>
           </li>
           <li>
-            <a href="https://github.com/kylelogue/mustard-ui" target="_blank">GitHub</a>
+            <a href="https://github.com/qomolinux/LRWiki" target="_blank">GitHub</a>
           </li>
           <li>
-            <a href="/support">Support</a>
+            <a href="/support">login</a>
           </li>
         </ul>
       </div>
     </nav>
+    <router-view></router-view>
   </div>
 </template>
 

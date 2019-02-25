@@ -1,21 +1,26 @@
 <template>
-    <div>
+    <div class="row">
+        <sidebar/>
+        <div class="col-lg-8 wikilist">
         <WikiDoc 
         v-for="doc in docs" 
         :data="doc"
         :key="doc.id"
         >
         </WikiDoc>
+        </div>
     </div>
 </template>
 
 <script>
 import WikiDoc from '@/components/Wikidoc.vue'
 import {getdocs} from '@/api/docs.js'
+import sidebar from '@/components/sidebar.vue'
 export default {
     name:'wikidocs',
     components:{
         WikiDoc,
+        sidebar,
     },
     created() {
         this._getdocs()
@@ -37,3 +42,8 @@ export default {
     }
 }
 </script>
+<style>
+#wikilist{
+    display: flex;
+}
+</style>
