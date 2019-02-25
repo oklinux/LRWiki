@@ -12,6 +12,7 @@
     "mustard-ui": "0.0.8",
     "vue": "^2.5.22",
     "vue-router": "^3.0.1",
+    "vuetify": "^1.5.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

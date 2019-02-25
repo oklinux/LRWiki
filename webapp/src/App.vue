@@ -1,39 +1,42 @@
 <template>
   <div id="app">
-    <WikiTitle/>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <nav>
+      <div class="nav-container row">
+        <div class="nav-logo col-sm-2">
+          LinuxRen
+        </div>
+        <ul class="nav-links">
+          <li>
+            <router-link to="/">Home</router-link>
+          </li>
+          <li>
+            <a href="https://github.com/qomolinux/LRWiki" target="_blank">GitHub</a>
+          </li>
+          <li>
+            <a href="/support">login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
+
 <script>
-import WikiTitle from '@/components/WikiTitle.vue'
+import 'mustard-ui'
 export default {
-  name:'app',
-  components:{
-    WikiTitle
+  name: "app",
+  components: {
   }
-}
+};
 </script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
