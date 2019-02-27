@@ -30,9 +30,9 @@ export default {
 span.title{
   display: inline;
   margin: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.2;
+  font-size: 150%;
+  font-weight: 500%;
+  line-height: 120%;
 }
 ul.info{
   list-style: none;

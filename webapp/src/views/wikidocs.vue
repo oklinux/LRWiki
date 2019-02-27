@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <sidebar/>
-        <div class="col-lg-8 wikilist">
+        <div class="col-lg-8 wikilist ">
         <WikiDoc 
         v-for="doc in docs" 
         :data="doc"
@@ -25,6 +25,14 @@ export default {
     created() {
         this._getdocs()
     },
+    mounted(){
+        if(this._isMobile){
+            console.log('is mobile')
+        }else{
+            console.log('not is mobile')
+        }
+        console.log(this.$mq)
+    },
     data() {
         return {
             docs:[],
@@ -38,12 +46,20 @@ export default {
                     console.log(res.data)
                 }
             )
+        },
+        _isMobile(){
+            if(screen.width<450){
+                return true
+            }else{
+                return false
+            }
         }
     }
 }
 </script>
 <style>
-#wikilist{
-    display: flex;
+.wikilist{
+    z-index: -1;
+    float: left;
 }
 </style>
