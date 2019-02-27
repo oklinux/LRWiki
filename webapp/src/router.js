@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import wikidocs from './views/wikidocs.vue'
+import viewlogin  from './views/login.vue';
+
 Vue.use(Router)
 let base =`${process.env.BASE_URL}`
 export default new Router({
@@ -17,6 +19,11 @@ export default new Router({
       name: 'docs' ,
       props: true ,
       component: () => import(/* webpackChunkName: "Detail" */'./components/DocDetail.vue')
+    },
+    {
+      path:'/login',
+      name:'login',
+      component: viewlogin,
     }
   ]
 })

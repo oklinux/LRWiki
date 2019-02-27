@@ -81,5 +81,6 @@ nav {
   float: right;
   min-height: 100;
   position: absolute;
+  z-index: 99;
 }
 </style>
