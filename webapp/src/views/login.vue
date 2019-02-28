@@ -15,23 +15,34 @@
 </template>
 
 <script>
-import {login} from '@/api/login.js'
 export default {
   name: "viewlogin",
   data() {
       return {
           username:'',
-          password:''
+          password:'',
+          submitted: false
       }
+  },
+  computed:{
+    loggingIn(){
+      return this.$store.state.authentication.status.loggingIn;
+    }
   },
   methods:{
     _login(){
-      console.log(this.password,this.username)
-      // login(this.username,this.passwrod)
+      console.log(this.username,this.password)
+      this.submitted=true
+      const {username,password} =this
+      const { dispatch } = this.$store;
+      if (username&&password){
+        dispatch('authentication/login',{username,password})
+      }
     }
   }
 };
 </script>
+
 <style>
 .card-title {
   color: black;

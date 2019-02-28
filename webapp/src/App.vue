@@ -11,7 +11,8 @@
             <a href="https://github.com/qomolinux/LRWiki" target="_blank">GitHub</a>
           </li>
           <li>
-            <router-link to="/login">login</router-link>
+            <router-link to="/login" v-if="!islogin">login</router-link>
+            <a v-if="islogin" @click='logout'>{{loginname}}</a>
           </li>
         </ul>
         <a
@@ -29,7 +30,8 @@
             <a href="https://github.com/qomolinux/LRWiki" target="_blank">GitHub</a>
           </li>
           <li>
-            <router-link to="/login">login</router-link>
+            <router-link to="/login" v-if="!islogin">login</router-link>
+            <a v-if="islogin" @click='logout'>{{loginname}}</a>
           </li>
         </ul>
       </div>
@@ -44,11 +46,28 @@ import "mustard-ui";
 export default {
   name: "app",
   components: {},
+  computed:{
+    islogin(){
+      return this.$store.state.authentication.status;
+    }
+  },
   data() {
     return {
       isshowtoggle: true,
-      isshowmenu: false
+      isshowmenu: false,
+      loginname:'',
     };
+  },
+  mounted() {
+    if (this.islogin){
+      this.loginname = JSON.parse(localStorage.tokendata)['user_id']
+    }
+  },
+  methods:{
+    logout(){
+      console.log('loggot');
+      this.$store.dispatch('authentication/logout')
+    }
   }
 };
 </script>
