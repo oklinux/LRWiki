@@ -3,8 +3,6 @@ import {Base64} from 'js-base64'
 import {
   HOST
 } from '@/common/config.js'
-
-
 export const userService = {
   login,
   logout,
@@ -37,9 +35,7 @@ function logout(){
   localStorage.removeItem('token')
 }
 function resolvetoken(token){
-  
   let token_meta_data = token['access']
   let [tokenhead,tokenpayload,signature] = token_meta_data.split('.')
-  console.log(Base64.decode(tokenpayload))
   return Base64.decode(tokenpayload)
 }

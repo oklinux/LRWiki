@@ -59,7 +59,7 @@ export default {
 </script>
 <style>
 .wikilist{
-    z-index: -1;
+    z-index: 9;
     float: left;
 }
 </style>

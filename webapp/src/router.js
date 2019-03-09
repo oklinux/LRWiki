@@ -24,6 +24,12 @@ export default new Router({
       path:'/login',
       name:'login',
       component: viewlogin,
+    },
+    {
+      path:'/doc/new',
+      name:'newdoc',
+      props:true,
+      component: () => import(/*webpackChunkName: "editor" */'./views/doceditor.vue')
     }
   ]
 })

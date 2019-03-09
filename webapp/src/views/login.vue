@@ -38,6 +38,7 @@ export default {
       if (username&&password){
         dispatch('authentication/login',{username,password})
       }
+
     }
   }
 };

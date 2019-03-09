@@ -48,7 +48,7 @@ export default {
   components: {},
   computed:{
     islogin(){
-      return this.$store.state.authentication.status;
+      return this.$store.state.authentication.status.loggedIn;
     }
   },
   data() {
@@ -58,7 +58,7 @@ export default {
       loginname:'',
     };
   },
-  mounted() {
+  updated() {
     if (this.islogin){
       this.loginname = JSON.parse(localStorage.tokendata)['user_id']
     }
@@ -66,6 +66,7 @@ export default {
   methods:{
     logout(){
       console.log('loggot');
+      this.loginname=''
       this.$store.dispatch('authentication/logout')
     }
   }
