@@ -27,7 +27,6 @@ export default {
                 (res)=>{
                     this.doc = res.data
                     console.log(res.data)
-                
                 }
             )
         }

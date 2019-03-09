@@ -4,7 +4,7 @@ import router from '@/router'
 const token  = JSON.parse(localStorage.getItem('token'));
 const initialState = token
     ? {status:{loggedIn:true},token}
-    : {status:{},token:null}
+    : {status:{loggedIn:false},token:null}
 
 export const authentication = {
     namespaced : true,
@@ -41,11 +41,11 @@ export const authentication = {
             state.token = token;
         },
         logginFailure(state){
-            state.status = {}
+            state.status = {loggedIn: false}
             state.status = null;
         },
         logout(state){
-            state.status = {}
+            state.status = {loggedIn: false}
             state.token = null
         }
     }
