@@ -12,6 +12,7 @@ from .models import Doc
 from .serializers import DocSerializers
 from .permissions import IsAccountOrReadOnly
 from lib.doc.query import get_doc_by_id
+from lib.tools.utils import get_title
 # Create your views here.
 
 
@@ -32,6 +33,7 @@ class DocView(APIView):
     def post(self, request):
         data = request.data.copy()
         data['author'] = str(request.user)
+        data['title'] = get_title(request.user['text'])
         serializers = DocSerializers(data=data)
         if not serializers.is_valid(raise_exception=True):
             return Response(serializers.errors, status=HTTP_400_BAD_REQUEST)
@@ -60,7 +62,9 @@ class DocDetailView(APIView):
 
     def put(self, request, doc_id):
         doc = self.get_object(doc_id)
-        serializer = DocSerializers(doc, data=request.data, partial=True)
+        data = request.data.copy()
+        data['title'] = get_title(data['text'])
+        serializer = DocSerializers(doc, data=data, partial=True)
         if not serializer.is_valid():
             return Response(serializer.errors,status=HTTP_400_BAD_REQUEST)
         data = serializer.validated_data

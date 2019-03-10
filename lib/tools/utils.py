@@ -47,4 +47,5 @@ class BaseTestCase(APITestCase):
         self.docs = [create_random_doc(author=self.users[user].account) for user in self.users]
 
 
-
+def get_title(text):
+    return text[text.find('#')+1:text('\n')]
