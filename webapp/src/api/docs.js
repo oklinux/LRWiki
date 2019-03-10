@@ -10,12 +10,15 @@ export function getdoc(docid){
     const url = HOST+'/api/doc/'+docid+'/'
     return axios.get(url)
 }
-export function postdoc(docid,text){
+export function postdoc(text){
     token = JSON.parse(localStorage.getItem('token'))['access']
+    data = {
+        'text':text,
+    }
     const url = HOST+'/api/doc/'+docid+'/'
-    axios.post(
+    return axios.post(
         url,
-        text,
+        data,
         {headers: {"Authorization":'Bearer ' + token}}
     )
 }

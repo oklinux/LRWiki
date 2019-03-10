@@ -2,7 +2,7 @@
   <div class="row" style="margin-top:0">
     <div id="editormenu" class="col">
       <div  class="col col-lg-offset-1 col-lg-10 col-sm-offset-2 col-sm-8">
-        <button class="button-primary button-purple">提交</button>
+        <button class="button-primary button-purple" @click="submit()">提交</button>
         <button class="button-danger" @click="cleartext()">清空</button>
       </div>
     </div>
@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-
+import {postdoc} from '@/api/docs'
 import marked from "marked";
 import _ from "lodash";
 export default {
@@ -41,8 +41,13 @@ export default {
     }, 300),
     cleartext(){
       this.input='hello'
+    },
+    submit(){
+      postdoc(this.input).then(
+        (res)=>
+        console.log(res)
+      )
     }
-    
   }
 };
 </script>
