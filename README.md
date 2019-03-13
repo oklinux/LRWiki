@@ -8,8 +8,8 @@
 `restful`架构  
 使用`jwt`来代替`session`  
 
-##前端
-使用vue构建  
+## 前端
+使用`vue-cli3`构建  
 `vue-route`进行路由控制
 `vuex`控制登陆状态
 支持`markdown`
