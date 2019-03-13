@@ -8,6 +8,19 @@
 `restful`架构  
 使用`jwt`来代替`session`  
 
+##前端
+使用vue构建  
+`vue-route`进行路由控制
+`vuex`控制登陆状态
+支持`markdown`
+主页 
+![](./screenshots/home.png)
+登录界面
+![](./screenshots/login.png)
+文章
+![](./screenshots/text.png)
+编辑界面
+![](./screenshots/editer.png)
 ## 数据库
 需要建立一个蝉知的user表的views
 名字叫做`wiki_user`
