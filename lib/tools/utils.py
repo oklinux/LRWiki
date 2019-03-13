@@ -48,4 +48,5 @@ class BaseTestCase(APITestCase):
 
 
 def get_title(text):
-    return text[text.find('#')+1:text('\n')]
+    title = text[text.find('#')+1:text.find('\n')]
+    return title

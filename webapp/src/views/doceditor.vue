@@ -1,12 +1,12 @@
 <template>
   <div class="row" style="margin-top:0">
     <div id="editormenu" class="col">
-      <div  class="col col-lg-offset-1 col-lg-10 col-sm-offset-2 col-sm-8">
+      <div  class="col col-lg-offset-1 col-lg-10 col-sm-offset-1 col-sm-10">
         <button class="button-primary button-purple" @click="submit()">提交</button>
         <button class="button-danger" @click="cleartext()">清空</button>
       </div>
     </div>
-      <div id="editor" class="col col-lg-offset-1 col-lg-10 col-sm-offset-2 col-sm-8">
+      <div id="editor" class="col col-lg-offset-1 col-lg-10 col-sm-offset-1 col-sm-10">
         <textarea :value="input" @input="update"></textarea>
         <div v-html="compiledMarkdown">
         </div>
@@ -15,19 +15,22 @@
 </template>
 <script>
 import {postdoc} from '@/api/docs'
+import {getdoc,putdoc} from '@/api/docs.js'
 import marked from "marked";
 import _ from "lodash";
 export default {
   name: "doceditor",
-  props: ["docdata"],
+  props: [
+    'docid',
+  ],
   data() {
     return {
-      input: "hello"
+      input: "# hello"
     };
   },
   mounted(){
-    if (this.docdata) {
-      this.input=this.docdata
+    if (this.docid) {
+      this._get_doc(this.docid)
     }
   },
   computed: {
@@ -43,9 +46,23 @@ export default {
       this.input='hello'
     },
     submit(){
-      postdoc(this.input).then(
-        (res)=>
-        console.log(res)
+      if(this.docid){
+        putdoc(this.docid,this.input).then(
+          (res)=>
+          console.log(res)
+        )
+      }else{
+        postdoc(this.input).then(
+          (res)=>
+          console.log(res)
+        )
+      }
+    },
+    _get_doc(docid){
+      getdoc(docid).then(
+        (res)=>{
+          this.input = res.data.text
+        }
       )
     }
   }

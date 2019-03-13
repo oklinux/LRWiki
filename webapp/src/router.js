@@ -15,10 +15,16 @@ export default new Router({
       component: wikidocs,
     },
     {
-      path: '/docs/:docid',
+      path: '/docs/:docid/',
       name: 'docs' ,
       props: true ,
       component: () => import(/* webpackChunkName: "Detail" */'./components/DocDetail.vue')
+    },
+    {
+      path: '/docs/:docid/editer',
+      name: 'docsediter' , 
+      props:true,
+      component: () => import(/*webpackChunkName: "editor" */'./views/doceditor.vue')
     },
     {
       path:'/login',

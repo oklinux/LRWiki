@@ -11,12 +11,24 @@ export function getdoc(docid){
     return axios.get(url)
 }
 export function postdoc(text){
-    token = JSON.parse(localStorage.getItem('token'))['access']
-    data = {
+    var token = JSON.parse(localStorage.getItem('token'))['access']
+    var data = {
+        'text':text,
+    }
+    const url = HOST+'/api/doc/'
+    return axios.post(
+        url,
+        data,
+        {headers: {"Authorization":'Bearer ' + token}}
+    )
+}
+export function putdoc(docid,text){
+    var token = JSON.parse(localStorage.getItem('token'))['access']
+    var data = {
         'text':text,
     }
     const url = HOST+'/api/doc/'+docid+'/'
-    return axios.post(
+    return axios.put(
         url,
         data,
         {headers: {"Authorization":'Bearer ' + token}}
